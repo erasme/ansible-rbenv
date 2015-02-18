@@ -1,0 +1,21 @@
+---
+
+# Ensure Python 2.7.x is being used
+language: 'python'
+python: '2.7'
+
+# Use system installed packages inside of the Virtual environment
+virtualenv:
+  system_site_packages: True
+
+# Skip running these which boosts the Travis boot time
+before_install: True
+install: True
+
+script:
+  # Clone the RoleSpec repo, feel free to use --branch xxx to use something
+  # other than the master branch (latest stable)
+  - 'git clone --depth 1 https://github.com/nickjj/rolespec'
+
+  # The location of YOUR test suite
+  - 'cd rolespec ; bin/rolespec -r https://github.com/erasme/ansible-roles-specs.git'
