@@ -20,5 +20,3 @@ galaxy_info:
   categories:
     - development
 
-dependencies:
-  - erasme.ruby
