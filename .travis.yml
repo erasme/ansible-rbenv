@@ -13,6 +13,9 @@ before_install: True
 install: True
 
 script:
+  # Add user
+  - sudo adduser foobar
+
   # Clone the RoleSpec repo, feel free to use --branch xxx to use something
   # other than the master branch (latest stable)
   - 'git clone --depth 1 https://github.com/nickjj/rolespec'
