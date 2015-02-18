@@ -37,15 +37,15 @@ This is mainly used as a dependency in combination with the erasme.ruby role, li
     dependencies:
       - { role: rbenv }
       - { role: ruby,
-          version: "{{ ruby_version }}",
-          ruby_default: "{{ ruby_version }}" }
+          version: "2.2.0",
+          ruby_default: "2.2.0" }
 
 Note however that rbenv is automatically listed as a dependency in the erasme.ruby role, so it shouldn't be necessary to add it explicitely to your projects.
 
 License
 -------
 
-MYI
+MIT
 
 Author Information
 ------------------
