@@ -1,0 +1,35 @@
+- debug: msg="Ruby deploy user {{ ruby_deploy_user }}"
+
+# Open temporary access
+- command: iptables -I OUTPUT -m tcp -p tcp -m multiport --dports 22,80,443,9418 -m comment --comment "rbenv-ansible-temp" -j ACCEPT
+  changed_when: false
+  
+- name: Installs rbenv
+  sudo_user: "{{ ruby_deploy_user }}"
+  sudo: yes
+  git: repo=https://github.com/sstephenson/rbenv.git dest=~{{ ruby_deploy_user }}/.rbenv accept_hostkey=true
+
+- name: Ensure fragments bash dir exists
+  sudo_user: "{{ ruby_deploy_user }}"
+  sudo: yes
+  file: dest=~{{ ruby_deploy_user }}/.bash.d/ state=directory
+
+- name: Installs rbenv bash file
+  copy: src=50_rbenv.bash dest=~{{ ruby_deploy_user }}/.bash.d/50_rbenv.bash mode=700 owner={{ ruby_deploy_user }}
+
+- name: Source rbenv bash file in dot bashrc
+  sudo_user: "{{ ruby_deploy_user }}"
+  sudo: yes
+  lineinfile: dest=~{{ ruby_deploy_user }}/.bash_profile regexp="^source ~/\.bash\.d/50_rbenv\.bash" insertafter=EOF line="source ~/.bash.d/50_rbenv.bash" create=yes
+
+- name: Creates plugin directory
+  file: path=~{{ ruby_deploy_user }}/.rbenv/plugins/ owner={{ ruby_deploy_user }} group={{ ruby_deploy_user }} mode=0755 state=directory
+
+- name: Installs ruby-build
+  sudo_user: "{{ ruby_deploy_user }}"
+  sudo: yes
+  git: repo=git://github.com/sstephenson/ruby-build.git dest=~{{ ruby_deploy_user }}/.rbenv/plugins/ruby-build accept_hostkey=true
+
+- command: iptables -D OUTPUT -m tcp -p tcp -m multiport --dports 22,80,443,9418 -m comment --comment "rbenv-ansible-temp" -j ACCEPT
+  changed_when: false
+
