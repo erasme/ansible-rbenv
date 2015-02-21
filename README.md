@@ -5,7 +5,7 @@ rbenv Ansible playbook
 CI](http://img.shields.io/travis/erasme/ansible-rbenv.svg?style=flat)](http://travis-ci.org/erasme/ansible-ruby)
 [![test-suite](http://img.shields.io/badge/ansible--roles--specs-ansible--rbenv-blue.svg?style=flat)](https://github.com/erasme/ansible-roles-specs/tree/master/ansible-rbenv/)
 [![Ansible
-Galaxy](http://img.shields.io/badge/galaxy-erasme.ruby--compiled-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/2909)
+Galaxy](http://img.shields.io/badge/galaxy-erasme.rbenv-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/2909)
 
 This playbook will install rbenv in a user's home directory.
 You can then leverage rbenv to install rubies for this user.
