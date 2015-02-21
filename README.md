@@ -1,5 +1,11 @@
-rbenv
-=====
+rbenv Ansible playbook
+======================
+
+[![Travis
+CI](http://img.shields.io/travis/erasme/ansible-rbenv.svg?style=flat)](http://travis-ci.org/erasme/ansible-ruby)
+[![test-suite](http://img.shields.io/badge/ansible--roles--specs-ansible--rbenv-blue.svg?style=flat)](https://github.com/erasme/ansible-roles-specs/tree/master/ansible-rbenv/)
+[![Ansible
+Galaxy](http://img.shields.io/badge/galaxy-erasme.ruby--compiled-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/2909)
 
 This playbook will install rbenv in a user's home directory.
 You can then leverage rbenv to install rubies for this user.
@@ -32,15 +38,17 @@ Dependencies
 Example Playbook
 ----------------
 
-This is mainly used as a dependency in combination with the erasme.ruby role, like :
+This is mainly used as a dependency in combination with the
+[erasme.ruby](https://galaxy.ansible.com/list#/roles/2925) role, like :
 
     dependencies:
-      - { role: rbenv }
-      - { role: ruby,
-          version: "2.2.0",
-          ruby_default: "2.2.0" }
+      - { role: erasme.rbenv }
+      - { role: erasme.ruby,
+          ruby_version: "2.2.0" }
 
-Note however that rbenv is automatically listed as a dependency in the erasme.ruby role, so it shouldn't be necessary to add it explicitely to your projects.
+Note however that erasme.rbenv is automatically listed as a dependency in the
+erasme.ruby role, so it shouldn't be necessary to add it explicitely to your
+projects.
 
 License
 -------
