@@ -3,7 +3,10 @@
 # Open temporary access
 - command: iptables -I OUTPUT -m tcp -p tcp -m multiport --dports 22,80,443,9418 -m comment --comment "rbenv-ansible-temp" -j ACCEPT
   changed_when: false
-  
+
+- name: Install required packages
+  apt: pkg=git-core state=present update-cache=yes
+
 - name: Installs rbenv
   sudo_user: "{{ ruby_deploy_user }}"
   sudo: yes
