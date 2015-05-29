@@ -18,7 +18,7 @@ None
 Role Variables
 --------------
 
-  - `ruby_deploy_user`: taget user for rbenv installation; required; no
+  - `ruby_deploy_user`: target user for rbenv installation; required; no
     default
   - `rbenv_makeopts`: Make options when building a ruby version;
     optional; default: -j2
