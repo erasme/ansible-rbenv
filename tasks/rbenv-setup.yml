@@ -8,7 +8,7 @@
   apt: pkg=git-core state=present update-cache=yes
 
 - name: Creates deploy user if needed
-  user: name={{ laclasse_annuaire_deploy_user }} state=present
+  user: name={{ ruby_deploy_user }} state=present
 
 - name: Installs rbenv
   sudo_user: "{{ ruby_deploy_user }}"
