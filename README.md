@@ -33,7 +33,7 @@ Tags
 Dependencies
 ------------
 
-  - erasme.ruby
+  - erasme.ruby-compiled
 
 Example Playbook
 ----------------
@@ -43,7 +43,7 @@ This is mainly used as a dependency in combination with the
 
     dependencies:
       - { role: erasme.rbenv }
-      - { role: erasme.ruby,
+      - { role: erasme.ruby-compiled,
           ruby_version: "2.2.0" }
 
 Note however that erasme.rbenv is automatically listed as a dependency in the
